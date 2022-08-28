@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 sg.theme('LightGreen')
 
+# adding this comment to see if VCS works
 menu_def = ['settings', ['add an opening', ['graphics', ['option 1', 'option 2', 'option 3']]]]
 
 menu_def = [['settings', ['graphics', ['option 1', 'option 2', ], 'add an opening'], ],]
