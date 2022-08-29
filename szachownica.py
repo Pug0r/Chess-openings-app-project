@@ -51,12 +51,12 @@ window = sg.Window('chess', layout)
 # tutaj wydaje sie ze dictionary bedzie pasowal idealnie
 # pawn, rook, bishop, knight, queen, king - pionek, wieza...
 
-figures = {PAWN_B:   sg.Image('pionek_b.png'),
-           ROOK_B:   sg.Image('wieza_b.png'),
-           KNIGHT_B: sg.Image('kon_b.png'),
-           BISHOP_B: sg.Image('goniec_b.png'),
+figures = {PAWN_B:   sg.Image('pawn_b.png'),
+           ROOK_B:   sg.Image('rook_b.png'),
+           KNIGHT_B: sg.Image('knight_b.png'),
+           BISHOP_B: sg.Image('bishop_b.png'),
            QUEEN_B:  sg.Image('hetman_b.png'),
-           KING_B:   sg.Image('krol_b.png')
+           KING_B:   sg.Image('king_b.png')
            }
 
 
