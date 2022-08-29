@@ -8,10 +8,10 @@ sg.theme('LightGreen')
 
 layout = [[sg.VPush()],
           [sg.Push(), sg.Text('tu powinna byc grafika z tytulem'), sg.Push()],
-          [sg.Push(), sg.Button('practice random opening', key='-random-'), sg.Push()],
-          [sg.Push(), sg.Button('choose opening to practice', key='-choose-'), sg.Push()],
-          [sg.Push(), sg.Button('settings', key = '-settings-'), sg.Push()],
-          [sg.Push(), sg.Button('about', key = '-about-'), sg.Push()],
+          [sg.Push(), sg.Button('practice random opening', key='-random-', font = 'Helvetica'), sg.Push()],
+          [sg.Push(), sg.Button('choose opening to practice', key='-choose-', font = 'Helvetica'), sg.Push()],
+          [sg.Push(), sg.Button('settings', key = '-settings-', font = 'Helvetica'), sg.Push()],
+          [sg.Push(), sg.Button('about', key = '-about-', font = 'Helvetica'), sg.Push()],
           [sg.VPush()]]
 
 
@@ -21,15 +21,22 @@ window = sg.Window(APP_NAME, layout, size=(500, 500))
 
 def settings():
     layout_settings = [[sg.VPush()],
-                       [sg.Push(), sg.Button('add an opening', key='-add-'), sg.Push()],
-                       [sg.Push(), sg.Button('change graphics', key='-graphics-'), sg.Push()],
-                       [sg.Push(), sg.Button('back to menu', key='-back-'), sg.Push()],
+                       [sg.Push(), sg.Button('add an opening', key='-add-', font = 'Helvetica'), sg.Push()],
+                       [sg.Push(), sg.Button('change graphics', key='-graphics-', font = 'Helvetica'), sg.Push()],
+                       [sg.Push(), sg.Button('back to menu', key='-back-', font = 'Helvetica'), sg.Push()],
                        [sg.VPush()]]
-    window2 = sg.Window(APP_NAME, layout_settings, size = (500, 500))
+    window2 = sg.Window(f'{APP_NAME}: settings', layout_settings, size = (500, 500))
     event, values = window2.read()
+    if event == sg.WIN_CLOSED:
+        window2.close()
+        window.close()
     if event == '-back-':
         window2.disappear()
         window.reappear()
+    if event == '-add-':
+        pass
+    if event == '-graphics-':
+        pass
 
 
 while True:
@@ -44,6 +51,6 @@ while True:
         window.disappear()
         settings()
     elif event == '-about-': #mozna tu opisac pokrotce o co chodzi (ale zrobilam to glownie zeby zobaczyc jak dziala popup xd)
-        sg.popup_no_buttons('this app blablablablabla', title = APP_NAME, modal = False)
+        sg.popup_no_buttons('This app was designed to blebleble', title = APP_NAME, modal = False)
 
 window.close()
