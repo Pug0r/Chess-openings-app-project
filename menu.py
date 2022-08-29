@@ -3,16 +3,15 @@ import PySimpleGUI as sg
 APP_NAME = "Chess Openings Coach"
 sg.theme('LightGreen')
 
-menu_def = ['settings', ['add an opening', ['graphics', ['option 1', 'option 2', 'option 3']]]]
 
-menu_def = [['settings', ['graphics', ['option 1', 'option 2', ], 'add an opening'], ], ]
+#menu_def = [['settings', ['graphics', ['option 1', 'option 2', ], 'add an opening'], ], ]
 # dalabys rade zrobic tak zeby settings bylo w ten sam sposob wyswietlone jak reszta? w sensie zeby nie bylo tak u gory
-layout = [[sg.Menu(menu_def)],
-          [sg.VPush()],
+# tak, zrobione
+layout = [[sg.VPush()],
           [sg.Push(), sg.Text('tu powinna byc grafika z tytulem'), sg.Push()],
           [sg.Push(), sg.Button('practice random opening', key='-random-'), sg.Push()],
           [sg.Push(), sg.Button('choose opening to practice', key='-choose-'), sg.Push()],
-          # [sg.Push(), sg.Button('settings', key = '-settings-'), sg.Push()],
+          [sg.Push(), sg.Button('settings', key = '-settings-'), sg.Push()],
           [sg.VPush()]]
 
 # layout_settings = [[sg.VPush()],
@@ -39,7 +38,7 @@ while True:
         pass
     elif event == '-choose-':
         pass
-# elif event == '-settings-':
-# pass
+    elif event == '-settings-':
+        pass
 
 window.close()
