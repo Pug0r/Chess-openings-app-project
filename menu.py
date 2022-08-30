@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
-
+# cos sie dziwnego dzieje jak sie klika settings - pojawia sie nowe okienko, a to stare zostaje ale nie da sie go wyswietlic xd
+# czadowy pomysl z tym about<3
 APP_NAME = "Chess Openings Coach"
 sg.theme('LightGreen')
 
