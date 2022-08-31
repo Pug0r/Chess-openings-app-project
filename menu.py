@@ -72,6 +72,6 @@ while True:
     elif event == 'add':
         pass
     elif event == '-about-':
-        sg.popup_no_buttons('This app was designed to blebleble', title = f'{APP_NAME}: about', modal = False)
+        sg.popup_no_buttons('This app was designed to blebleble', title=f'{APP_NAME}: about', modal = False)
 
 window.close()
