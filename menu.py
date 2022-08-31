@@ -20,7 +20,8 @@ layout_settings = [[sg.VPush()],
                    [sg.Push(), sg.Button('back to menu', key='-back-', font='Helvetica'), sg.Push()],
                    [sg.VPush()]]
 
-#wrzucone tu obrazki sa tymczasowe, tylko dla sprawdzenia dzialania (option1 to bedzie obrazek z wszystkimi figurkami a option2 z innymi wgl)
+# wrzucone tu obrazki sa tymczasowe, tylko dla sprawdzenia dzialania
+# (option1 to bedzie obrazek z wszystkimi figurkami a option2 z innymi wgl)
 option1 = sg.Image('graphics/pawn_w.png', visible=False, key='option1')
 option2 = sg.Image('graphics/knight_b.png', visible=False, key='option2')
 
@@ -50,7 +51,7 @@ def preview(n):
     window[f'option{n}'].update(visible=True)
 
 
-def choose_graphics(n): #potem przy generowaniu tablicy przydaloby sie to jakos polaczyc
+def choose_graphics(n):  # potem przy generowaniu tablicy przydaloby sie to jakos polaczyc
     pass
 
 
