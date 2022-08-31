@@ -29,7 +29,11 @@ layout_graphics = [[sg.VPush()],
                    [sg.Push(), sg.Text('here will be displayed a preview of your choice', key='-preview-'), option1, option2, sg.Push()], #tu chce zeby wyswietlaly sie pionki z opcji
                    [sg.Push(), sg.Button('back', key = '-graphics_back-', font = 'Helvetica'), sg.Push()]]
 
-layout = [[sg.pin(sg.Column(layout_start, key = '-start-', visible = True)), sg.pin(sg.Column(layout_settings, key = '-settings_window-', visible = False)), sg.pin(sg.Column(layout_graphics, key = '-graphics_window-', visible = False))]]
+openings = ('name1', 'name2', 'name3', 'name4')
+
+layout_choose = [[sg.Button(button_text=openings[i], font='Helvetica', key=f'opening{i}')] for i in range(len(openings))]
+
+layout = [[sg.pin(sg.Column(layout_start, key='-start-', visible=True)), sg.pin(sg.Column(layout_settings, key='-settings_window-', visible=False)), sg.pin(sg.Column(layout_graphics, key='-graphics_window-', visible=False)), sg.pin(sg.Column(layout_choose, key='-choose_window-', visible=False))]]
 
 window = sg.Window(APP_NAME, layout, element_justification='c', size=(500, 500))
 
@@ -41,7 +45,7 @@ def preview(n):
     window[f'option{n}'].update(visible=True)
 
 
-def choose_graphics(n):
+def choose_graphics(n): #potem przy generowaniu tablicy przydaloby sie to jakos polaczyc
     pass
 
 
@@ -52,7 +56,8 @@ while True:
     elif event == '-random-':
         pass
     elif event == '-choose-':
-        pass
+        window['-choose_window-'].update(visible=True)
+        window['-start-'].update(visible=False)
     elif event == '-settings-':
         window['-settings_window-'].update(visible=True)
         window['-start-'].update(visible=False)
@@ -67,8 +72,10 @@ while True:
         window['-settings_window-'].update(visible=True)
     if event == '-graphics1-':
         preview(1)
+        choose_graphics(1)
     if event == '-graphics2-':
         preview(2)
+        choose_graphics(2)
     elif event == 'add':
         pass
     elif event == '-about-':
