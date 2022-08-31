@@ -22,7 +22,7 @@ layout_settings = [[sg.VPush()],
 
 # wrzucone tu obrazki sa tymczasowe, tylko dla sprawdzenia dzialania
 # (option1 to bedzie obrazek z wszystkimi figurkami a option2 z innymi wgl)
-option1 = sg.Image('graphics/pawn_w.png', visible=False, key='option1')
+option1 = sg.Image('graphics/figures1.png', visible=False, key='option1')
 option2 = sg.Image('graphics/knight_b.png', visible=False, key='option2')
 
 layout_graphics = [[sg.VPush()],
