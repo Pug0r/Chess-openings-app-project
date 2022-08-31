@@ -32,7 +32,7 @@ piece_to_move = 0
 # Near-board information
 opening_name = "Queen's Gambit"
 variation_name = "Main line"
-coach_mike ='graphics/chess_mike_coach.png'
+coach_mike ='graphics/chess_mike_coach2.png' #chess mike 2 jest mniejszy niz 1 ale nadal cos nie dziala
 
 
 # Window
@@ -186,10 +186,10 @@ opening_variation_display = tk.Label(text=variation_name, padx=10, font='Helveti
 opening_variation_display.grid(row=1, column=9, padx=10)
 
 # cos nie dziala, zerknij na to pozniej
-# dalej nie dziala
-coach_mike_display = tk.Label(window, image=tk.PhotoImage(file=coach_mike))
-coach_mike_display.grid(row=2, column=9, padx=10)
-coach_mike_display.image = tk.PhotoImage(file=coach_mike)
+# i dalej nie dziala
+#coach_mike_display = tk.Label(window, image=tk.PhotoImage(file=coach_mike))
+#coach_mike_display.grid(row=2, column=9, padx=10)
+#coach_mike_display.image = tk.PhotoImage(file=coach_mike)
 
 exit_button = tk.Button(window, text="exit")
 exit_button.grid(row=6, column=9, padx=10)
