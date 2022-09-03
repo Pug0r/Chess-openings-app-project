@@ -3,7 +3,7 @@ import PySimpleGUI as sg
 # czadowy pomysl z tym about<3
 APP_NAME = "Chess Openings Coach"
 sg.theme('LightGreen')
-
+GRAPHICS_NO = 1
 
 layout_start = [[sg.VPush()],
                 [sg.Push(), sg.Text('\n \n tu powinna byc grafika z tytulem'), sg.Push()],
@@ -22,7 +22,7 @@ layout_settings = [[sg.VPush()],
 
 # wrzucone tu obrazki sa tymczasowe, tylko dla sprawdzenia dzialania
 # (option1 to bedzie obrazek z wszystkimi figurkami a option2 z innymi wgl)
-option1 = sg.Image('graphics/figures1.png', visible=False, key='option1')
+option1 = sg.Image(f'graphics/figures1.png', visible=False, key='option1')
 option2 = sg.Image('graphics/knight_b.png', visible=False, key='option2')
 
 layout_graphics = [[sg.VPush()],
@@ -52,7 +52,7 @@ def preview(n):
 
 
 def choose_graphics(n):  # potem przy generowaniu tablicy przydaloby sie to jakos polaczyc
-    pass
+    GRAPHICS_NO = n
 
 
 while True:

@@ -81,19 +81,19 @@ def move_piece(from_square, to_square, piece, board):
 
 
 figures = {
-           PAWN_B:  tk.PhotoImage(file='graphics/pawn_b.png'),
-           ROOK_B:  tk.PhotoImage(file='graphics/rook_b.png'),
-           KNIGHT_B:  tk.PhotoImage(file='graphics/knight_b.png'),
-           BISHOP_B:  tk.PhotoImage(file='graphics/bishop_b.png'),
-           QUEEN_B:  tk.PhotoImage(file='graphics/queen_b.png'),
-           KING_B:  tk.PhotoImage(file='graphics/king_b.png'),
+           PAWN_B:  tk.PhotoImage(file='graphics/graphics1/pawn_b.png'),
+           ROOK_B:  tk.PhotoImage(file='graphics/graphics1/rook_b.png'),
+           KNIGHT_B:  tk.PhotoImage(file='graphics/graphics1/knight_b.png'),
+           BISHOP_B:  tk.PhotoImage(file='graphics/graphics1/bishop_b.png'),
+           QUEEN_B:  tk.PhotoImage(file='graphics/graphics1/queen_b.png'),
+           KING_B:  tk.PhotoImage(file='graphics/graphics1/king_b.png'),
            EMPTY:  tk.PhotoImage(width=1, height=1),
-           PAWN_W:  tk.PhotoImage(file='graphics/pawn_w.png'),
-           ROOK_W:  tk.PhotoImage(file='graphics/rook_w.png'),
-           KNIGHT_W:  tk.PhotoImage(file='graphics/knight_w.png'),
-           BISHOP_W:  tk.PhotoImage(file='graphics/bishop_w.png'),
-           QUEEN_W:  tk.PhotoImage(file='graphics/queen_w.png'),
-           KING_W:  tk.PhotoImage(file='graphics/king_w.png'),
+           PAWN_W:  tk.PhotoImage(file='graphics/graphics1/pawn_w.png'),
+           ROOK_W:  tk.PhotoImage(file='graphics/graphics1/rook_w.png'),
+           KNIGHT_W:  tk.PhotoImage(file='graphics/graphics1/knight_w.png'),
+           BISHOP_W:  tk.PhotoImage(file='graphics/graphics1/bishop_w.png'),
+           QUEEN_W:  tk.PhotoImage(file='graphics/graphics1/queen_w.png'),
+           KING_W:  tk.PhotoImage(file='graphics/graphics1/king_w.png'),
            }
 
 
