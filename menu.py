@@ -6,7 +6,8 @@ GRAPHICS_NO = 1
 sg.theme('LightGreen')
 
 layout_start = [[sg.VPush()],
-                [sg.Push(), sg.Text('\n \n tu powinna byc grafika z tytulem'), sg.Push()],
+                [sg.Push(), sg.Image('tytul2.png'), sg.Push()],
+                [sg.Text('\n')],
                 [sg.Push(), sg.Button('practice random opening', key='-random-', font='NSimSun'), sg.Push()],
                 [sg.Push(), sg.Button('choose opening to practice', key='-choose-', font='NSimSun'), sg.Push()],
                 [sg.Push(), sg.Button('settings', key='-settings-', font='NSimSun'), sg.Push()],
