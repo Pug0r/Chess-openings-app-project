@@ -1,5 +1,6 @@
 import tkinter as tk
 from move_validation import is_valid_move
+from PIL import ImageTk, Image
 
 #from menu import GRAPHICS_NO <--- tu cos sie psuje, nie rozumiem do konca czemu ale jak to zrobie to odpala sie menu zamist tablicy szachowej??
 
@@ -186,9 +187,10 @@ opening_name_display.grid(row=0, column=9, padx=10, columnspan=2)
 opening_variation_display = tk.Label(text=variation_name, padx=10, font='Helvetica')
 opening_variation_display.grid(row=1, column=9, padx=10)
 
-# obrazek dalej nie dziala ale nie psuje ulozenia szachownicy
-coach_mike_display = tk.Label(window, image=tk.PhotoImage(file=coach_mike))
-coach_mike_display.image = tk.PhotoImage(file=coach_mike)
+# działa!!! można dodać przezroczyste tło jeszcze
+img_coach_mike = ImageTk.PhotoImage(Image.open(coach_mike))  # nie wiem czemu ale gdy to jest wrzucone do tego nizej bez tworzenia nowej zmiennej to obrazek sie nie pojawia xd
+coach_mike_display = tk.Label(window, image=img_coach_mike)
+coach_mike_display.photo = tk.PhotoImage(file=coach_mike)
 coach_mike_display.grid(row=2, column=9, padx=10, rowspan=3)
 
 
