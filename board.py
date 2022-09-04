@@ -1,6 +1,7 @@
 import tkinter as tk
 from move_validation import is_valid_move
 
+#from menu import GRAPHICS_NO <--- tu cos sie psuje, nie rozumiem do konca czemu ale jak to zrobie to odpala sie menu zamist tablicy szachowej??
 
 SQUARE_HEIGHT = 85
 SQUARE_WIDTH = 85
@@ -32,7 +33,7 @@ piece_to_move = 0
 # Near-board information
 opening_name = "Queen's Gambit"
 variation_name = "Main line"
-coach_mike ='graphics/chess_mike_coach2.png' #chess mike 2 jest mniejszy niz 1 ale nadal cos nie dziala
+coach_mike = 'graphics/chess_mike_coach2.png'  # chess mike 2 jest mniejszy niz 1 ale nadal cos nie dziala
 
 
 # Window
@@ -81,7 +82,7 @@ def move_piece(from_square, to_square, piece, board):
 
 
 figures = {
-           PAWN_B:  tk.PhotoImage(file='graphics/graphics1/pawn_b.png'),
+           PAWN_B:  tk.PhotoImage(file='graphics/graphics1/pawn_b.png'), #powinno byc file=f'graphics/graphics{GRAPHICS_NO}/pawn_b.png' ale cos nie dziala
            ROOK_B:  tk.PhotoImage(file='graphics/graphics1/rook_b.png'),
            KNIGHT_B:  tk.PhotoImage(file='graphics/graphics1/knight_b.png'),
            BISHOP_B:  tk.PhotoImage(file='graphics/graphics1/bishop_b.png'),
@@ -181,15 +182,15 @@ starting_board = {
 
 # Further window configuration
 opening_name_display = tk.Label(text=opening_name, padx=10, font='Helvetica')
-opening_name_display.grid(row=0, column=9, padx=10)
+opening_name_display.grid(row=0, column=9, padx=10, columnspan=2)
 opening_variation_display = tk.Label(text=variation_name, padx=10, font='Helvetica')
 opening_variation_display.grid(row=1, column=9, padx=10)
 
-# cos nie dziala, zerknij na to pozniej
-# i dalej nie dziala
-#coach_mike_display = tk.Label(window, image=tk.PhotoImage(file=coach_mike))
-#coach_mike_display.grid(row=2, column=9, padx=10)
-#coach_mike_display.image = tk.PhotoImage(file=coach_mike)
+# obrazek dalej nie dziala ale nie psuje ulozenia szachownicy
+coach_mike_display = tk.Label(window, image=tk.PhotoImage(file=coach_mike))
+coach_mike_display.image = tk.PhotoImage(file=coach_mike)
+coach_mike_display.grid(row=2, column=9, padx=10, rowspan=3)
+
 
 exit_button = tk.Button(window, text="exit")
 exit_button.grid(row=6, column=9, padx=10)
@@ -207,5 +208,3 @@ while GAME_ON:
         squares_clicked = 0
 
     window.update()
-
-
