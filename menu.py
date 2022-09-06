@@ -1,12 +1,14 @@
 import PySimpleGUI as sg
-
+import os
+import random
+from threading import Thread
+from openings import *
 
 APP_NAME = "Chess Openings Coach"
 ABOUT_TEXT = "This app is designed to help You practise & memorise various chess openings. \nIt uses PySimpleGUI, " \
              "tkinter and Pychess. \nDeveloped by Aleksander Pugowski and Marta Niemiec "
 
 GRAPHICS_NO = 1
-
 sg.theme('LightGreen')
 
 layout_start = [[sg.VPush()],
@@ -36,9 +38,8 @@ layout_graphics = [[sg.VPush()],
                    [sg.Push(), sg.Text('chosen: option 1', key='-choice-'), sg.Push()],
                    [sg.Push(), sg.Button('back', key='-graphics_back-', font='NSimSun'), sg.Push()]]
 
-openings = ('name1', 'name2', 'name3', 'name4', 'name5', 'name5', 'name5', 'name5', 'name5', 'name5', 'name5', 'name5', 'name5', 'name5', 'name5', 'name5', 'name5')  # dodalam tak duzo zeby zobaczyc jak dziala scrollowanie
 
-layout_choose = [[sg.Button(button_text=openings[i], font='NSimSun', key=f'opening{i}')] for i in range(len(openings))]
+layout_choose = [[sg.Button(button_text=OPENING_NUMBERS[i]['name'], font='NSimSun', key=i+1)] for i in range(len(OPENING_NUMBERS))]
 
 layout_choose2 = [[sg.VPush()],
                   [sg.Push(), sg.Button('back to main manu', font='NSimSun', key='-back_choose-')]]
@@ -55,16 +56,18 @@ def preview(n):
     window[f'option{n}'].update(visible=True)
 
 
-def choose_graphics(n):  # potem przy generowaniu tablicy przydaloby sie to jakos polaczyc
+def choose_graphics(n):
     window['-choice-'].update(f'chosen: option {n}')
 
 
 while True:
     event, values = window.read()
     if event in (sg.WIN_CLOSED, 'Cancel'):
-        break
-    elif event == '-random-':
         pass
+    elif event == '-random-':
+        arg = random.choice(list(OPENING_NUMBERS.keys()))
+        t = Thread(target=lambda: os.system("python board.py {args} {graphics}".format(args=arg, graphics=GRAPHICS_NO)))
+        t.start()
     elif event == '-choose-':
         window['-choose_window-'].update(visible=True)
         window['-choose_window2-'].update(visible=True)
@@ -93,9 +96,15 @@ while True:
         preview(2)
         choose_graphics(2)
         GRAPHICS_NO = 2
-    elif event == 'add':
-        pass
+    elif event == '-add-':
+        sg.popup_no_buttons("For the time being, to add an opening go to program files/openings and "
+                            "simply type in the opening, following the format", title='How to add an opening?', modal=False)
     elif event == '-about-':
         sg.popup_no_buttons(ABOUT_TEXT, title=APP_NAME, modal=False)
+
+    if event in [i+1 for i in range(len(OPENING_NUMBERS))]:
+        print(event)
+        a = Thread(target=lambda: os.system("python board.py {args} {graphics}".format(args=int(event)-1, graphics=GRAPHICS_NO)))
+        a.start()
 
 window.close()
