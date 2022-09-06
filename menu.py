@@ -1,6 +1,10 @@
 import PySimpleGUI as sg
 
+
 APP_NAME = "Chess Openings Coach"
+ABOUT_TEXT = "This app is designed to help You practise & memorise various chess openings. \nIt uses PySimpleGUI, " \
+             "tkinter and Pychess. \nDeveloped by Aleksander Pugowski and Marta Niemiec "
+
 GRAPHICS_NO = 1
 
 sg.theme('LightGreen')
@@ -28,7 +32,7 @@ layout_graphics = [[sg.VPush()],
                    [sg.Text('\n \n')],
                    [sg.Push(), sg.Button('option 1', key = '-graphics1-', font='NSimSun'), sg.Push()],
                    [sg.Push(), sg.Button('option 2', key = '-graphics2-', font='NSimSun'), sg.Push()],
-                   [sg.Push(), sg.Text('here will be displayed a preview of your choice', key='-preview-'), option1, option2, sg.Push()], #tu chce zeby wyswietlaly sie pionki z opcji
+                   [sg.Push(), sg.Text('A preview of your choice will be displayed here', key='-preview-'), option1, option2, sg.Push()], #tu chce zeby wyswietlaly sie pionki z opcji
                    [sg.Push(), sg.Text('chosen: option 1', key='-choice-'), sg.Push()],
                    [sg.Push(), sg.Button('back', key='-graphics_back-', font='NSimSun'), sg.Push()]]
 
@@ -92,6 +96,6 @@ while True:
     elif event == 'add':
         pass
     elif event == '-about-':
-        sg.popup_no_buttons('This app was designed to help practice and memorize chess openings. wiecej tekstu wiecej tekstu wiecej tekstu chce zobaczyc w jaki sposob to sie skaluje', title=APP_NAME, modal=False)
+        sg.popup_no_buttons(ABOUT_TEXT, title=APP_NAME, modal=False)
 
 window.close()
