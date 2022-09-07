@@ -67,25 +67,7 @@ if __name__ == '__main__':
     max_move_number = len(opening_played['variations'][variation_name])
     moves_to_play = opening_played['variations'][variation_name]
 
-    # Window
-    window = tk.Tk()
-    window.title("board")
-    window.config(pady=20, padx=20, bg="#3e3e42")
 
-    # Further window configuration
-    opening_name_display = tk.Label(text=opening_name, padx=10, font='Helvetica')
-    opening_name_display.grid(row=0, column=9, padx=10, columnspan=2)
-    opening_variation_display = tk.Label(text=variation_name, padx=10, font='Helvetica')
-    opening_variation_display.grid(row=1, column=9, padx=10)
-
-    # Coach mike display
-    img_coach_mike = ImageTk.PhotoImage(Image.open(START_MIKE))
-    coach_mike_display = tk.Label(window, image=img_coach_mike)
-    coach_mike_display.photo = tk.PhotoImage(file=START_MIKE)
-    coach_mike_display.grid(row=2, column=9, padx=10, rowspan=3)
-
-    exit_button = tk.Button(window, text="exit", command=window.destroy)
-    exit_button.grid(row=6, column=9, padx=10)
 
 
     def draw_board(user_plays_white):
@@ -94,13 +76,13 @@ if __name__ == '__main__':
             square = 0
             for row in range(8):
                 for column in range(8):
-                    list(starting_board.values())[square][0].grid(row=row, column=column)
+                    list(starting_board.values())[square][0].grid(row=row, column=column+1)
                     square += 1
         else:
             square = 63
             for row in range(8):
                 for column in range(8):
-                    list(starting_board.values())[square][0].grid(row=row, column=column)
+                    list(starting_board.values())[square][0].grid(row=row, column=column+1)
                     square -= 1
 
 
@@ -194,6 +176,64 @@ if __name__ == '__main__':
             end_square = row + column
             squares_clicked += 1
 
+    def show_next_move():
+        messagebox.showwarning(title="The next correct move is...", message=moves_to_play[move_number])
+
+    # Window
+    window = tk.Tk()
+    window.title("board")
+    window.config(pady=5, padx=5, bg="#3e3e42")
+
+    # Further window configuration
+    opening_name_display = tk.Label(text=opening_name, padx=5, font='Helvetica')
+    opening_name_display.grid(row=0, column=9, padx=5, columnspan=2)
+    opening_variation_display = tk.Label(text=variation_name, padx=5, font='Helvetica')
+    opening_variation_display.grid(row=1, column=9, padx=5)
+
+    # Coach mike display
+    img_coach_mike = ImageTk.PhotoImage(Image.open(START_MIKE))
+    coach_mike_display = tk.Label(window, image=img_coach_mike)
+    coach_mike_display.photo = tk.PhotoImage(file=START_MIKE)
+    coach_mike_display.grid(row=2, column=9, padx=5, rowspan=3)
+
+    exit_button = tk.Button(window, text="exit", command=window.destroy)
+    exit_button.grid(row=6, column=9, padx=5)
+
+    next_move_button = tk.Button(window, text="Coach Mike please help me!", command=show_next_move)
+    next_move_button.grid(row=5, column=9, padx=5)
+
+    la = tk.Label(window, text='a', fg='white', bg="#3e3e42", font=("Arial", 20))
+    la.grid(row=9, column=1)
+    lb = tk.Label(window, text='b', fg='white', bg="#3e3e42", font=("Arial", 20))
+    lb.grid(row=9, column=2)
+    lc = tk.Label(window, text='c', fg='white', bg="#3e3e42", font=("Arial", 20))
+    lc.grid(row=9, column=3)
+    ld = tk.Label(window, text='d', fg='white', bg="#3e3e42", font=("Arial", 20))
+    ld.grid(row=9, column=4)
+    le = tk.Label(window, text='e', fg='white', bg="#3e3e42", font=("Arial", 20))
+    le.grid(row=9, column=5)
+    lf = tk.Label(window, text='f', fg='white', bg="#3e3e42", font=("Arial", 20))
+    lf.grid(row=9, column=6)
+    lg = tk.Label(window, text='g', fg='white', bg="#3e3e42", font=("Arial", 20))
+    lg.grid(row=9, column=7)
+    lh = tk.Label(window, text='h', fg='white', bg="#3e3e42", font=("Arial", 20))
+    lh.grid(row=9, column=8)
+    n8 = tk.Label(window, text='8', fg='white', bg="#3e3e42", font=("Arial", 20))
+    n8.grid(row=0, column=0)
+    n7 = tk.Label(window, text='7', fg='white', bg="#3e3e42", font=("Arial", 20))
+    n7.grid(row=1, column=0)
+    n6 = tk.Label(window, text='6', fg='white', bg="#3e3e42", font=("Arial", 20))
+    n6.grid(row=2, column=0)
+    n5 = tk.Label(window, text='5', fg='white', bg="#3e3e42", font=("Arial", 20))
+    n5.grid(row=3, column=0)
+    n4 = tk.Label(window, text='4', fg='white', bg="#3e3e42", font=("Arial", 20))
+    n4.grid(row=4, column=0)
+    n3 = tk.Label(window, text='3', fg='white', bg="#3e3e42", font=("Arial", 20))
+    n3.grid(row=5, column=0)
+    n2 = tk.Label(window, text='2', fg='white', bg="#3e3e42", font=("Arial", 20))
+    n2.grid(row=6, column=0)
+    n1 = tk.Label(window, text='1', fg='white', bg="#3e3e42", font=("Arial", 20))
+    n1.grid(row=7, column=0)
 
     figures = {
         p: tk.PhotoImage(file='graphics/graphics{num}/pawn_b.png'.format(num=pieces_graphics)),
