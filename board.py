@@ -10,14 +10,13 @@ from openings import *
 
 
 if __name__ == '__main__':
-    # from menu import GRAPHICS_NO <--- tu cos sie psuje, nie rozumiem do konca czemu ale jak to zrobie to odpala sie menu zamist tablicy szachowej??
     SQUARE_HEIGHT = 85
     SQUARE_WIDTH = 85
     START_MIKE = 'graphics/chess_mike_coach2.png'
     HAPPY_MIKE = 'graphics/chess_mike_happy.png'
     SAD_MIKE = 'graphics/chess_mike_sad.png'
     WRONG_MOVE_MSG = "That's a wrong move!\nCoach Mike is disappointed at you.\nTry again!"
-    THE_END_MSG = "Congrats! Coach Mike is very happy with you.\n Go play some chess"
+    THE_END_MSG = "Congrats! Coach Mike is very happy with you.\n Go play some chess!"
 
     # Pieces
     EMPTY = 0
@@ -60,9 +59,13 @@ if __name__ == '__main__':
     # Opening information
     opening_played = OPENING_NUMBERS[ast.literal_eval(sys.argv[1])]
     opening_name = opening_played['name']
-    variation_name = opening_played['variant']
-    user_plays_white = random.choice((True, False))
-    max_move_number = opening_played['last_move']
+    variation_name = random.choice(list(opening_played['variations'].keys()))
+    if opening_played['user_plays_white'] == '':
+        user_plays_white = random.choice((True, False))
+    else:
+        user_plays_white = opening_played['user_plays_white']
+    max_move_number = len(opening_played['variations'][variation_name])
+    moves_to_play = opening_played['variations'][variation_name]
 
     # Window
     window = tk.Tk()
@@ -146,7 +149,7 @@ if __name__ == '__main__':
 
     def is_end_of_game():
         global GAME_ON
-        if move_number > max_move_number:
+        if move_number > max_move_number - 1:
             messagebox.showwarning(title="You've made it", message=THE_END_MSG)
             GAME_ON = False
 
@@ -174,7 +177,10 @@ if __name__ == '__main__':
         square = chess.parse_square(square)
         fen = board.board_fen()
         local_board = chess.BaseBoard(fen)
-        return piece_string_to_variable[str(local_board.piece_at(square))]
+        try:
+            return piece_string_to_variable[str(local_board.piece_at(square))]
+        except KeyError:
+            pass
 
 
     def square_info(row, column):
@@ -187,9 +193,6 @@ if __name__ == '__main__':
         else:
             end_square = row + column
             squares_clicked += 1
-        # to be deleted, development purposes
-        print(row + column, piece_to_move)
-        print(squares_clicked)
 
 
     figures = {
@@ -348,23 +351,23 @@ if __name__ == '__main__':
         is_end_of_game()
         if user_plays_white and move_number % 2 != 0:
             time.sleep(1)
-            computer_piece_to_move = piece_at(opening_played[move_number][:2], engine_board)
-            move_piece(opening_played[move_number][:2], opening_played[move_number][2:], computer_piece_to_move, game_board)
-            move_abstract_piece(opening_played[move_number][:2], opening_played[move_number][2:])
+            computer_piece_to_move = piece_at(moves_to_play[move_number][:2], engine_board)
+            move_piece(moves_to_play[move_number][:2], moves_to_play[move_number][2:], computer_piece_to_move, game_board)
+            move_abstract_piece(moves_to_play[move_number][:2], moves_to_play[move_number][2:])
             squares_clicked = 0
 
         if not user_plays_white and move_number % 2 == 0:
             time.sleep(1)
-            computer_piece_to_move = piece_at(opening_played[move_number][:2], engine_board)
-            move_piece(opening_played[move_number][:2], opening_played[move_number][2:], computer_piece_to_move, game_board)
-            move_abstract_piece(opening_played[move_number][:2], opening_played[move_number][2:])
+            computer_piece_to_move = piece_at(moves_to_play[move_number][:2], engine_board)
+            move_piece(moves_to_play[move_number][:2], moves_to_play[move_number][2:], computer_piece_to_move, game_board)
+            move_abstract_piece(moves_to_play[move_number][:2], moves_to_play[move_number][2:])
             squares_clicked = 0
 
         if squares_clicked == 2 and piece_to_move:
 
             if is_valid_move(start_square, end_square):
 
-                if is_correct_move(opening_played, start_square, end_square):
+                if is_correct_move(moves_to_play, start_square, end_square):
                     move_abstract_piece(start_square, end_square)
                     change_mike(HAPPY_MIKE)
                 else:
