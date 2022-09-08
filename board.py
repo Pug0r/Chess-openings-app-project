@@ -6,6 +6,8 @@ import time
 import sys
 import ast
 import random
+from threading import Thread
+from playsound import playsound
 from openings import *
 
 
@@ -15,6 +17,7 @@ if __name__ == '__main__':
     START_MIKE = 'graphics/chess_mike_coach2.png'
     HAPPY_MIKE = 'graphics/chess_mike_happy.png'
     SAD_MIKE = 'graphics/chess_mike_sad.png'
+    MOVE_SOUND = 'chess_move_sound.mp3'
     WRONG_MOVE_MSG = "That's a wrong move!\nCoach Mike is disappointed at you.\nTry again!"
     THE_END_MSG = "Congrats! Coach Mike is very happy with you.\n Go play some chess!"
 
@@ -32,7 +35,10 @@ if __name__ == '__main__':
     R = 10
     K = 11
     Q = 12
-    pieces_graphics = sys.argv[2]
+    try:
+        pieces_graphics = sys.argv[2]
+    except IndexError:
+        pieces_graphics = 1
 
     piece_string_to_variable = {'p': p,
                                 'n': n,
@@ -57,7 +63,10 @@ if __name__ == '__main__':
     move_number = 0
 
     # Opening information
-    opening_played = OPENING_NUMBERS[ast.literal_eval(sys.argv[1])]
+    try:
+        opening_played = OPENING_NUMBERS[ast.literal_eval(sys.argv[1])]
+    except IndexError:
+        opening_played = QUEENS_GAMBIT
     opening_name = opening_played['name']
     variation_name = random.choice(list(opening_played['variations'].keys()))
     if opening_played['user_plays_white'] == '':
@@ -102,6 +111,9 @@ if __name__ == '__main__':
     def move_piece(from_square, to_square, piece, board):
         """ Careful, as this function DOES NOT validate the moves"""
         global squares_clicked
+        sound_thread = Thread(target=lambda: playsound(MOVE_SOUND))
+        sound_thread.start()
+        time.sleep(0.25)
         squares_clicked -= 2
         board[from_square][0].configure(image=figures[EMPTY])
         board[from_square][1] = EMPTY
@@ -132,6 +144,7 @@ if __name__ == '__main__':
     def is_end_of_game():
         global GAME_ON
         if move_number > max_move_number - 1:
+            time.sleep(0.5)
             messagebox.showwarning(title="You've made it", message=THE_END_MSG)
             GAME_ON = False
 

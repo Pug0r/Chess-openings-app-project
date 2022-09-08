@@ -3,6 +3,7 @@ import os
 import random
 from threading import Thread
 from openings import *
+import board
 
 APP_NAME = "Chess Openings Coach"
 ABOUT_TEXT = "This app is designed to help You practise & memorise various chess openings. \nIt uses PySimpleGUI, " \
