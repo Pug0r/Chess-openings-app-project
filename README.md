@@ -16,4 +16,4 @@ threading
 os
 sys
 
-** dodane w trakcie zajec, ale to tylko dowod ze uwaznie slucham ** 
+** dodane w trakcie zajec, ale to tylko dowod ze uwaznie slucham;** 
