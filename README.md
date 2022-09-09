@@ -5,15 +5,15 @@ This app allows you to practice various chess openings. You can play both as whi
 **To use the app, for the time being, download all the files, open them in your favourite IDE (recommended PyCharm) and start file 'menu.py'. In future, if it finally works, it will be available as app (via Pyinstaller or something similar, but they have been resistant to cooperation so far...).
 
 **Requirements: 
-tkinter 
-playsound 
-chess 
-PySimpleGUI
-PIL
-time
-ast
-threading
-os
-sys
+- tkinter
+- playsound 
+- chess 
+- PySimpleGUI
+- PIL
+- time
+- ast
+- threading
+- os
+- sys
 
 ** dodane w trakcie zajec, ale to tylko dowod ze uwaznie slucham;** 
