@@ -16,4 +16,3 @@ This app allows you to practice various chess openings. You can play both as whi
 - os
 - sys
 
-** dodane w trakcie zajec, ale to tylko dowod ze uwaznie slucham;** 
