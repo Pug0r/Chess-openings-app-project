@@ -16,3 +16,5 @@ This app allows you to practice various chess openings. You can play both as whi
 - os
 - sys
 
+![alt text](https://github.com/Pug0r/Chess-openings-app-project/blob/graphics/board.png?raw=true)
+
