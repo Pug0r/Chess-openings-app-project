@@ -16,7 +16,8 @@ This app allows you to practice various chess openings. You can play both as whi
 - os
 - sys
 
+![ups:](graphics/menu_window.png?raw=true)
+
 ![ups:](graphics/board.png?raw=true)
 
-![ups:](graphics/menu.png?raw=true)
 
