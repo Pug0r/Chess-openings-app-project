@@ -18,3 +18,5 @@ This app allows you to practice various chess openings. You can play both as whi
 
 ![ups:](graphics/board.png?raw=true)
 
+![ups:](graphics/menu.png?raw=true)
+
